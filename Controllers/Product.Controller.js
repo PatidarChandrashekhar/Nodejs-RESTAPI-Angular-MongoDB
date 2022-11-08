@@ -14,7 +14,10 @@ module.exports = {
     try {
       await client.connect();
       //const results = await client.db("PaymentGateway").collection("customerTransactions").find(  { $or: [ { status: 'COMPLETED' }, { status: 'IN PROGRESS' } ] } ).toArray();
-      const results = await client.db("PaymentGateway").collection("customerTransactions").find({ status: { $nin: ["COMPLETED", "IN PROGRESS", "REJECTED"] } }).toArray();;
+      //const results = await client.db("PaymentGateway").collection("customerTransactions").find({ status: { $nin: ["COMPLETED", "IN PROGRESS", "REJECTED"] } }).toArray();
+
+      const results = await client.db("PaymentGateway").collection("customerTransactions").find({ status: { $nin: ["REJECTED"] } }).toArray(); // CHANDRA TESTING ONLY
+
       //const results = await client.db("PaymentGateway").collection("customerTransactions").findOne({ status: 'COMPLETED'});
       res.send(results);
     } catch (error) {

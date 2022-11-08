@@ -2,8 +2,12 @@ const express = require('express');
 const createError = require('http-errors');
 const dbUtil = require('./initMongoDB');
 const dotenv = require('dotenv').config();
+var cors = require('cors');
 
 const app = express();
+
+//Enable All CORS Requests
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -17,16 +21,13 @@ app.use('/products', ProductRoute);
 
 //404 handler and pass to error handler
 app.use((req, res, next) => {
+  //Enabling CORS
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Origin", "http://localhost:4200",always);
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");    
-  /*
-  const err = new Error('Not found');
-  err.status = 404;
-  next(err);
-  */
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
+  next();
   // You can use the above code if your not using the http-errors module
-  next(createError(404, 'Not found'));
+  //next(createError(404, 'Not found'));
 });
 
 //Error handler

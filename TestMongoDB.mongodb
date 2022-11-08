@@ -14,7 +14,7 @@ use('PaymentGateway');
 db.customerTransactions.insertMany(
 [{
 "id": "1",
-"date": 1639502071000,
+"date": "2022-01-23",
 "sender": {
 "firstName": "John",
 "lastName": "Smith",
@@ -35,7 +35,7 @@ db.customerTransactions.insertMany(
 },
 {
 "id": "2",
-"date": 1639486575000,
+"date": "2022-01-30",
 "sender": {
 "firstName": "John2",
 "lastName": "Smith",
@@ -56,7 +56,7 @@ db.customerTransactions.insertMany(
 },
 {
 "id": "3",
-"date": 1639478930000,
+"date": "2022-02-10",
 "sender": {
 "firstName": "John3",
 "lastName": "Smith",
@@ -77,7 +77,7 @@ db.customerTransactions.insertMany(
 },
 {
 "id": "4",
-"date": 1638997755000,
+"date": "2022-06-06",
 "sender": {
 "firstName": "John4",
 "lastName": "Smith",
